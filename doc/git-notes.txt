@@ -1,0 +1,74 @@
+Git and GitHub:
+
+once per computer:
+$ git config --global user.name "Your Name"
+$ git config --global user.email your.email@example.com
+
+initialize a new repository:
+$ git init
+
+to ignore files in version control, add them to:
+.gitignore file
+
+add files to Git (adds recursively from current directory):
+$ git add .
+
+display changes added but not yet committed:
+$ git status
+
+commit changes (saves locally, unlike subversion):
+-a can be used to add and commit (don't use if you created a new file since the last commit)
+$ git commit -m "message"
+
+list of commit messages:
+$ git log
+
+checkout locally committed repository (if you really messed up your changes and want to go back to the last commit):
+adding -f forces overwriting current changes
+$ git checkout -f
+
+This command tells Git that you want to add GitHub as the origin for your main (master) branch:
+$ git remote add origin git@github.com:Ryukaider/scottville.git
+
+push your repository up to GitHub:
+$ git push -u origin master
+
+create a new branch and switch to it:
+$ git checkout -b <branch-name>
+
+list all local branches (asterisk indicates current branch):
+$ git branch
+
+same as linux mv command:
+$ git mv
+
+switch to master branch:
+$ git checkout master
+
+merge branch into master branch:
+$ git merge <branch-name>
+
+delete a branch after a merge:
+$ git branch -d <branch-name>
+
+delete a branch without merging (if you screwed up the branch really bad):
+$ git branch -D <branch-name>
+
+pushes local master branch to the remote repository:
+$ git push
+
+push the application from git to heroku:
+$ git push heroku master
+
+
+
+SO GENERAL WORK FLOW WILL LOOK LIKE THIS:
+
+You make a pull from the actual github web site it looks like.  It will be at https://github.com/Ryukaider/scottville.
+$ git checkout -b <branch-name>
+make changes
+$ git add .
+$ git commit -m "message"
+$ git checkout master
+$ git merge <branch-name>
+$ git push

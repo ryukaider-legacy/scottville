@@ -1,0 +1,25 @@
+sign up for a heroku account
+https://api.heroku.com/signup
+https://api.heroku.com/myapps
+http://scottville.herokuapp.com/
+
+installs heroku:
+$ gem install heroku
+
+tells heroku your public key so that you can use Git to push:
+$ heroku keys:add
+
+creates a subdomain on the heroku server for the app:
+$ heroku create --stack cedar
+
+push the application from git to heroku:
+$ git push heroku master
+
+launches the location of your application with your web browser (you can also just go to the URL manually):
+$ heroku open
+
+renames the application so the URL looks like <name>.herokuapp.com
+$ heroku rename <name>
+
+NOTE: You can get a custom domain with heroku hosting!
+https://devcenter.heroku.com/

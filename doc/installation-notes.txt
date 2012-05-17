@@ -1,0 +1,22 @@
+install ruby 1.9.3 (language):
+http://rubyforge.org/frs/?group_id=167
+check version with:
+$ ruby -v
+
+install rails (framework):
+http://railsinstaller.org/
+check version with (it should be 3.2.3):
+$ rails -v
+
+installing git (repository and version control):
+http://git-scm.com/book/ch1-4.html
+
+download rubygems:
+http://rubyforge.org/frs/?group_id=126
+extract to wherever, then run this from the rubygems directory:
+$ ruby setup.rb
+use this command so that we are using the same version of rubygems:
+$ gem update --system 1.8.24
+finally, create a file called .gemrc in your home directory (C:\Users\You) and put this in it:
+install: --no-rdoc --no-ri
+update: --no-rdoc --no-ri

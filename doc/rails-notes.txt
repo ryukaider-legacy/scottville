@@ -1,0 +1,8 @@
+creates a new rails project in the current directory:
+$ rails new <app-name>
+
+you probably want to edit gemfile after creating a new project then use this:
+$ bundle install
+
+start a server for your app:
+$ rails server
