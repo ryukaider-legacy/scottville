@@ -1,0 +1,22 @@
+$ rails generate scaffold User name:string email:string
+creates a table "User" with column "name" of type string and column "email" of type string
+an "id" column is created automatically with a unique primary key
+
+$ bundle exec rake db:migrate
+or
+$ rake db:migrate
+migrate the database using rake (update the database with the new data model)
+
+$ rake db:rollback
+undo a migrate
+
+$ bundle exec rake -T db
+to see a list of database tasks
+
+$ bundle exec rake -T
+to see all rake tasks available
+
+/users			index	page to list all users
+/users/1		show	page to show user with id 1
+/users/new		new		page to make a new user
+/users/1/edit	edit	page to edit user with id 1

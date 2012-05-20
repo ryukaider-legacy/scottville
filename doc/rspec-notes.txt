@@ -1,0 +1,20 @@
+generate an integration test (request spec)
+$ rails generate integration_test static_pages
+
+runs the test
+$ bundle exec rspec spec/requests/<controller-name_spec.rb>
+
+# An example of one test case that checks if the help page contains the word "Help"
+describe "Help page" do
+
+    it "should have the content 'Help'" do
+      visit '/static_pages/help'
+      page.should have_content('Help')
+    end
+  end
+
+# checks for the text inside the title tag
+page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Home")
+
+# make a variable base_title contain the string "Ruby on..."
+let(:base_title) ( "Ruby on Rails Tutorial Sample App" )

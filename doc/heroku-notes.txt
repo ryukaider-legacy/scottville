@@ -15,6 +15,9 @@ $ heroku create --stack cedar
 push the application from git to heroku:
 $ git push heroku master
 
+migrate the database to heroku:
+$ heroku run rake db:migrate
+
 launches the location of your application with your web browser (you can also just go to the URL manually):
 $ heroku open
 

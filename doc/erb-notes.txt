@@ -1,0 +1,9 @@
+<% ... %> executes the code inside, while <%= ... %> executes it and inserts the result into the template
+
+# creates a :title variable with the string 'Home'
+<% provide(:title, 'Home') %>
+# inserts the variable :title with the text 'Home'
+<%= yield(:title) %>
+
+# using this in a layout file will insert everything from your static html.erb file in place of it
+<%= yield %>

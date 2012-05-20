@@ -1,0 +1,2 @@
+limit the "content" field to 140 characters
+validates :content, :length => { :maximum => 140 }

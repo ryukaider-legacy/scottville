@@ -3,6 +3,27 @@ $ rails new <app-name>
 
 you probably want to edit gemfile after creating a new project then use this:
 $ bundle install
+or
+$ bundle install --without production
 
 start a server for your app:
 $ rails server
+
+$ rails console
+
+use RSpec in place of Test::Unit
+$ rails generate rspec:install
+
+generate controllers with no test files
+$ rails generate controller <controller-name> <page1> <page2> --no-test-framework
+
+undo a generate controller
+$ rails destroy constroller <controller-name>
+
+# Add additional pages by adding
+get "static_pages/<page-name>"
+# to config/routes.rb
+# and defining it in the controller with
+def <page-name>
+end
+# then create a new file app/views/<controller>/<page-name>.html.erb
