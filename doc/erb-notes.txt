@@ -7,3 +7,9 @@
 
 # using this in a layout file will insert everything from your static html.erb file in place of it
 <%= yield %>
+
+# create a link
+<%= link_to "<link-text>", '<link-url>', <id or class>: "btn btn-large btn-primary" %>
+
+# add an image link
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>

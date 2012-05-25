@@ -18,3 +18,5 @@ page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App |
 
 # make a variable base_title contain the string "Ruby on..."
 let(:base_title) ( "Ruby on Rails Tutorial Sample App" )
+
+page.should_not have_selector('title', :text => '| Home')

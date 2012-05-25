@@ -9,6 +9,7 @@ $ bundle install --without production
 start a server for your app:
 $ rails server
 
+# the console can be used to evaluate pieces of code
 $ rails console
 
 use RSpec in place of Test::Unit

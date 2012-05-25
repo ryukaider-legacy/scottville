@@ -1,0 +1,103 @@
+# main method
+def initialize(attributes = {})
+# assigns nil variables to your class object
+attr_accessor :name, :email
+# create a new object for this class, with or without setting the variables
+object = Object.new
+object = Object.new(name: "bob", email: "bob@example.com")
+
+# limit the "content" field to 140 characters
+validates :content, :length => { :maximum => 140 }
+
+# typical printing of a string
+print
+print "foo"
+# print but with a new line
+puts
+# convert an object to a string
+object.t_s
+# returns true if the string is empty or has only white space - very useful for checking that real input is being given by the user
+<string>.blank?
+
+# same as if !
+unless
+unless string.empty?
+
+# .inspect outputs the literal, this will output :name while puts would output name
+:name.inspect
+# shortcut
+p :name
+
+# returns the object type
+<object>.class
+# return the superclass of an object
+<object>.class.superclass
+
+# split a string into an array based on white space
+<string>.split
+# split a string into an array based on 'x'
+<string>.split('x')
+# the last element in the array
+array[-1]
+# get number of elements in array
+x = array.length
+# sort array in numerical order, does not actually change the array variable
+array.sort
+# sort array in numerical order, DOES change the array variable
+array.sort!
+# reverse order of elements in the array
+array.reverse
+# randomize the array elements?
+array.shuffle
+# add an element to the end of the array
+array.push(x)
+array << x
+array << "foo" << "bar"
+# join elements of the array separated by nothing
+array.join
+# join elements of the array separated by comma space
+array.join(', ')
+# output an array with elements 0 through 9
+(0..9).to_a
+('a'..'e').to_a
+# output only part of the array
+array[0..2]
+# a combination of several things
+# this will make an array of each letter, randomize them, take only 8 of them, and combine them with no spaces
+# so it will always return a string of 8 random unique letters
+('a'..'z').to_a.shuffle[0..7].join
+
+
+# empty hash
+hash = {}
+# hashes can have non-integer index
+hash["first_name"] = "Bob"
+# defining multiple elements at once
+hash = { "first_name" => "Michael", "last_name" => "Hartl" }
+# hashes most commonly use symbols for indexes, which are prefixed by a colon
+hash = { :name => "Michael Hartl", :email => "michael@example.com" }
+# ruby 1.9 special syntax for this
+hash = { name: "Michael Hartl", email: "michael@example.com" }
+# can have a 2d hash
+params[:user] = { name: "Michael Hartl", email: "mhartl@example.com" }
+# you can have nonexistent keys return something specific, in this case any nonexistent key will return 0 instead of nil
+h = Hash.new(0)
+
+
+# each will perform the block on each element of the array, i is the block variable, and the following code is the block
+(1..5).each do |i|
+	puts 2 * i
+# common convention if only one line
+(1..5).each { |i| puts 2 * i }
+# outputs the block 3 times, does not take a variable
+3.times { puts "foobar" }
+# creates an array with elements 1 through 5 squared
+(1..5).map { |i| i**2 }
+# %w creates a string array, so the block is performed on each element before being mapped, creating the array ["A", "B", "C"]
+%w[a, b, c].map { |char| char.upcase }
+# hashes can use blocks
+# the each method for hashes takes two variables, key and value
+flash = { success: "It worked!", error: "It failed." }
+flash.each do |key, value|
+	puts "Key #{key.inspect} has value #{value.inspect}"
+end
