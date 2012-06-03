@@ -11,6 +11,8 @@ $ rails server
 
 # the console can be used to evaluate pieces of code
 $ rails console
+# to not save changes
+$ rails console --sandbox
 
 use RSpec in place of Test::Unit
 $ rails generate rspec:install
@@ -21,6 +23,9 @@ $ rails generate controller <controller-name> <page1> <page2> --no-test-framewor
 undo a generate controller
 $ rails destroy constroller <controller-name>
 
+# generate model
+$ rails generate model User name:string email:string
+
 # Add additional pages by adding
 get "static_pages/<page-name>"
 # to config/routes.rb
@@ -28,3 +33,6 @@ get "static_pages/<page-name>"
 def <page-name>
 end
 # then create a new file app/views/<controller>/<page-name>.html.erb
+
+# adds comments with the data model to model files
+$ bundle exec annotate --position before

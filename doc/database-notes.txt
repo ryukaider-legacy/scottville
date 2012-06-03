@@ -2,6 +2,9 @@ $ rails generate scaffold User name:string email:string
 creates a table "User" with column "name" of type string and column "email" of type string
 an "id" column is created automatically with a unique primary key
 
+# generate model
+$ rails generate model User name:string email:string
+
 $ bundle exec rake db:migrate
 or
 $ rake db:migrate
@@ -20,3 +23,62 @@ to see all rake tasks available
 /users/1		show	page to show user with id 1
 /users/new		new		page to make a new user
 /users/1/edit	edit	page to edit user with id 1
+
+# saves the new object to the database
+<object>.save
+
+# perform a new and a save at the same time
+<table>.create
+User.create(name: "A Nother", email: "another@example.org")
+foo = User.create(name: "Foo", email: "foo@bar.com")
+
+# opposite of create
+<object>.destroy
+
+# find a row in the table based on id
+<table>.find(<id>)
+Example:
+User.find(3)
+
+# find a row by any other field
+<table>.find_by_<field>(<value>)
+
+# returns the first entry in the table
+<table>.first
+
+# returns all entries in the table
+<table>.all
+
+# update a field
+<object>.<field> = "<value>"
+<object>.save
+
+# update multiple fields (also does a save)
+<object>.update_attributes(<field> "<value>", <field> "<value>")
+Example:
+user.update_attributes(name: "The Dude", email: "dude@abides.org")
+
+# prevents blank input for fields
+validates <field>, presence: true
+Example:
+validates :name, presence: true
+
+# check if info in the object would be saved to the database, based on validation options that you set in the model
+<object>.valid?
+
+# shows why a validity check failed
+<object>.errors.full_messages
+
+# create a migration
+$ rails generate migration add_index_to_users_email
+
+# enforce uniqueness in a database table (use in a db migration file)
+add_index :users, :email, unique: true
+
+# change the email field to all lowercase before saving (use in a model)
+before_save { |user| user.email = email.downcase }
+
+# this will only allow unique email entries into the users table
+$ rails generate migration add_index_to_users_email
+# add this to the method in the /db/migrate file
+add_index :users, :email, unique: true

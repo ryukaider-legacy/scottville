@@ -101,3 +101,6 @@ flash = { success: "It worked!", error: "It failed." }
 flash.each do |key, value|
 	puts "Key #{key.inspect} has value #{value.inspect}"
 end
+
+# makes a string of 51 "a"s
+"a" * 51
