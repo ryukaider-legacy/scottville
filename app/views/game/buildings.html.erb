@@ -1,0 +1,15 @@
+<h1>Buildings</h1>
+  <% if @current_user.building %>
+      <br>Residence: <%= @current_user.building.residence %>
+      <br>Credits Building: <%= @current_user.building.credit %>
+      <br>Aether building: <%= @current_user.building.aether %>
+      <br>Item building: <%= @current_user.building.item %>
+      <br>Stealth building: <%= @current_user.building.stealth %>
+      <br>Defense building: <%= @current_user.building.defense %>
+    <% else %>
+        For some reason you don't have a buildings table, which means Scott failed at programming.  Contact him at ryukaider@gmail.com.
+  <% end %>
+  
+  <%= form_tag :action => "buildings_submit" do %>
+    <%= submit_tag "Build Residence", class: "btn btn-large btn-primary" %>
+  <% end %>

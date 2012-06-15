@@ -1,13 +1,21 @@
 Scottville::Application.routes.draw do
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
   
+  # session pages
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
+  # game pages
+  match '/game', to: 'game#index'
+  match '/buildings', to: 'game#buildings'
+  match '/buildings_submit', to: 'game#buildings_submit'
+  
+  # static pages
   match '/about',    to: 'static_pages#about'
   match '/contact',    to: 'static_pages#contact'
   match '/help',    to: 'static_pages#help'
