@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
   
   def new
+    redirect_to(root_path) unless !signed_in?
     @user = User.new
   end
   
@@ -17,10 +18,11 @@ class UsersController < ApplicationController
     if @user.save
       building = @user.create_building(residence: "0", credit: "0", aether: "0", item: "0", stealth: "0", defense: "0")
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to " + game_name
       redirect_to @user
     else
-      render 'new'
+      redirect_to(game_path) unless !signed_in?
+      render 'new' unless signed_in?
     end
   end
   

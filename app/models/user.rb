@@ -15,22 +15,44 @@
 #
 
 class User < ActiveRecord::Base
+
   attr_accessible :email, :name, :password, :password_confirmation
-  has_secure_password
+  HUMANIZED_ATTRIBUTES = {
+    :name => "Username",
+    :password_digest => "Password"
+  }
+  def self.human_attribute_name(attr, options={})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
+
   has_one :building, dependent: :destroy
   
   before_save { |user| user.email = email.downcase }
+  before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
   
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :name,  presence:     true,
+                    length:       { maximum: 20 },
+                    uniqueness:   { case_sensitive: false },
+                    name_format:  true, # see app/validations/name_format_validator.rb
+                    reduce:       true  # only show the first error
   
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
-  
-  private
+  validates :email, presence:     true,
+                    length:       { maximum: 254 },
+                    uniqueness:   { case_sensitive: false },
+                    email_format: true, # see app/validators/email_format_validator.rb
+                    reduce:       true  # only show the first error
+                    
+  has_secure_password   # putting this here makes the errors appear in the right order
 
+  validates :password,  length:   { :in => 6..20 },
+                        presence: true,
+                        reduce:   true
+
+  validates :password_confirmation, presence:   true
+
+  private
+  
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end

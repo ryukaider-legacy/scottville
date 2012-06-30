@@ -7,7 +7,7 @@ Scottville::Application.routes.draw do
   
   # session pages
   match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
+  match '/login',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
   # game pages
