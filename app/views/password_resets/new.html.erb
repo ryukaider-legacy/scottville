@@ -1,0 +1,28 @@
+<%= render 'shared/flash_messages' %>
+
+<h1>Reset Password</h1>
+
+<p><center><h4>Enter your email address below to receive instructions for resetting your <%= game_name %> account password.</h4></center></p>
+<br>
+
+<div class="row">
+  <div class="span6 offset3">
+  
+    <%= render 'shared/single_form_error' %>
+
+    <%= form_tag password_resets_path, :method => :post do %>
+    
+      <%= label_tag :email %>
+      <%= text_field_tag :email, session[:bad_email], maxlength: 254 %>
+      
+      <%= submit_tag "Submit", class: "btn btn-large btn-primary wide_button" %>
+    <% end %>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+window.onload = function() {
+  document.getElementById('email').focus();
+}
+</script>

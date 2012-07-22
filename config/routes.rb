@@ -2,6 +2,8 @@ Scottville::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :password_resets
+  resources :activate, only: [:edit]
 
   root to: 'static_pages#home'
   
@@ -9,6 +11,9 @@ Scottville::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/login',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/resetpassword', to: 'password_resets#new'
+  match '/activation', to: 'users#activation'
+  match '/activation_resend', to: 'users#activation_resend'
   
   # game pages
   match '/game', to: 'game#index'

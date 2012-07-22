@@ -160,7 +160,6 @@ input, textarea, select, .uneditable-input {
 #error_explanation {
   color: #f00;
   ul {
-    
     margin: 4px 0 0 22px;
   }
 }
@@ -168,8 +167,24 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
- }
- 
+}
+
+.error_field {
+  border-color: #FF0000;
+  box-shadow: #FF0000;
+}
+
+input[type="checkbox"], label{
+ display:inline-block;
+ *display:inline; /*For IE7*/
+ *zoom:1;
+}
+
+span.right {
+position: relative;
+left: 180px;
+}
+
  /* users index */
 
 .users {
@@ -183,4 +198,18 @@ input, textarea, select, .uneditable-input {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+/* buttons */
+
+.wide_button {
+    width: 150px !important;
+}
+
+/* images */
+
+.error_image {
+  background: transparent url(error.png) no-repeat left center;
+  background-size:24px 24px;
+  padding:3px 0px 3px 34px; 
 }

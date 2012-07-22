@@ -1,0 +1,19 @@
+<% if flash[:error] %>
+  <div class="alert alert-error">
+    <div class="error_image">
+      <%= flash[:error] %>
+    </div>
+  </div>
+<% end %>
+
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<% if flash[:info] %>
+  <div class="alert alert-info">
+    <%= flash[:info] %>
+  </div>
+<% end %>

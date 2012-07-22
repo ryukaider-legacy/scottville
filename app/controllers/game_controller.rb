@@ -2,6 +2,7 @@ class GameController < ApplicationController
 
   # if the user tries to access any of these pages while logged out, they will be asked to login, and redirected to the appropriate page after
   before_filter :signed_in_user
+  before_filter :activation_redirect
   
   def index
   end

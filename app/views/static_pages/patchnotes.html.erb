@@ -1,6 +1,40 @@
 <h1>Patch Notes</h1>
 
 <p>
+<h2></h2>
+<ul>
+</ul>
+</p>
+<br>
+
+<p>
+<h2>Version 0.0.5 - 07/21/12</h2>
+<ul>
+  <h4>Many of the changes that I made in this patch are going to go unnoticed and underappeciated since they mostly have to do with errors, but I still put a lot of work into these changes.</h4>
+  <br><h3>General</h3><br>
+  <li>Added a "Create Account" link to the header when logged out (so the link is available from any page, not just the home page).</li>
+  <li>Changed the term "Signup" to "Create Account" where appropriate.  Also changed the term "Sign in" to "Login" where appropriate.</li>
+  <li>Increased the width of some buttons to make them easier to click.</li>
+  <li>Added some word wrapping for output (in case you want to have an obnoxiously long email address, for example).</li>
+  <li>Added autofocus to the first field on form pages.  Submitting a form with errors should autofocus to the first field with an error now as well (which makes my site better than battle.net).</li>
+  <li>There is now an error icon for error messages.  Yeah I spent hours working on this so don't you hate on it.  Let me tell you about this adventure I had with the error image.  First I throw some align HTML tags at it, and it just doesn't care about them.  Then I make it a table and it aligns right.  But then I found out that you are supposed to put that kind of stuff in a css file, so I had to figure out how to convert the code to css.  Then I found out that using a table isn't as good as not using a table.  So I rewrote the css to not use a table.  Then I found out that it's better code and better web design to have such an image as a background image.  So I rewrote the css again to make it a background image.  At this point, everything worked if the error message was more than 1 line, but the image got cut off if it was only one line.  Increasing the size of the error box made the image fit and align correctly, and more than one line of text align correctly, but when there was only one line of text, it was a few pixels higher than vertical center.  And that made me REAL ANGRY.  So I searched for solutions and only found ones with bad side effects.  But then right before I gave up, I figured out what to do.  And now the image and text alignment couldn't be any more perfect, while following good code and good web design structure.  You're welcome.</li>
+  <li>Improved cookies security.</li>
+  <li>Changed "Email" to "Email Address" on forms.</li>
+  <br><h3>Login Page Changes</h3><br>
+  <li>User's email address input now persists on failed login.</li>
+  <li>Improved login error messages.  In particular, if you give an incorrect email, it specifically says the email is bad rather than saying it's a bad email/password combination (which also makes my site better than battle.net).
+  <li>User is now redirected to the game after logging in, instead of their profile.</li>
+  <li>Added a reset password feature for users who forget their password.  I won't go into details, but it's pretty awesome and you can be sure that it handles any situation well.</li>
+  <li>Because I'm such an awesome guy, I'm saving your email between the login and password reset pages so you don't have to keep retyping it if you forgot your password.</li>
+  <li>Added a "keep me logged in" checkbox.  Basically if it is unchecked, you will be logged out when you close your browser.  If it is checked, you won't be logged out when you close your browser.</li>
+  <br><h3>Create Account Page Changes</h3><br>
+  <li>An account must now be activated after being created.  An unactivated account can visit non-game pages while logged in, but trying to visit a game page will redirect you to the activation page.  To activate, all you have to do is click a link in an email that is sent.</li>
+  <li>There is now placeholder text in the fields that provides input tips.</li>
+</ul>
+</p>
+<br>
+
+<p>
 <h2>Version 0.0.4 - 06/29/12</h2>
 <ul>
   <li>I switched the game name to a more reasonable name, "Dawn of Ninjas".</li>
@@ -8,6 +42,8 @@
   <li>I greatly improved the signup form.  You shouldn't actually notice what I did, because it was mostly fixing security issues, adding limitations, improving validations, and handling bad situations better.  But I did put a lot of work into this and I think it will handle any situation well.</li>
 </ul>
 </p>
+<br>
+
 <p>
 <h2>Version 0.0.3 - 06/15/12</h2>
 <ul>
@@ -18,6 +54,7 @@
   <li>You can now build residences from the buildings page (however they are free because the game doesn't have resources yet).</li>
 </ul>
 </p>
+<br>
 
 <p>
 <h2>Version 0.0.2 - 06/10/12</h2>
@@ -28,8 +65,9 @@
   <li>Users can delete themselves</li>
   <li>There is a page that lists all users</li>
 </ul>
-</p>
+<br>
 
+</p>
 <h2>Version 0.0.1 - 05/25/12</h2>
 This is the first time that the site is viewable on the interwebs.  At this point it only contains static pages - home, about, contact, help, and patch notes pages.
 </p>

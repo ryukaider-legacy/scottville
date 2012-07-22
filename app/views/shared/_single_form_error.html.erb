@@ -1,0 +1,15 @@
+<% unless @error_message.blank? %>
+  <div class="alert alert-error">
+    <div class="error_image">
+      <%= @error_message %>
+    </div>
+  </div>
+<% end %>
+
+<% unless @raw_error_message.blank? %>
+  <div class="alert alert-error">
+    <div class="error_image">
+      <%= raw @raw_error_message %>
+    </div>
+  </div>
+<% end %>

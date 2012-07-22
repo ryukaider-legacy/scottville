@@ -1,0 +1,28 @@
+<h1>Reset Password</h1>
+<center><h4>Please enter a new password for your account, <%= wrap_text(@user.email) %>.</h4></center>
+<br>
+
+<div class="row">
+  <div class="span6 offset3">
+  
+    <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+    
+      <%= render 'shared/error_messages', object: f.object %>
+ 
+      <%= f.label :password %>
+      <%= f.password_field :password, maxlength: 20 %>
+    
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation, maxlength: 20 %>
+      
+      <%= f.submit "Update Password", class: "btn btn-large btn-primary wide_button" %>
+    <% end %>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+window.onload = function() {
+  document.getElementById('user_password').focus();
+}
+</script>

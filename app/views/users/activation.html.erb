@@ -1,0 +1,11 @@
+<%= render 'shared/flash_messages' %>
+
+<h1>Account Activation</h1>
+
+An email was sent to <b><%= wrap_text(current_user.email) %></b> when the account was created, containing a link to activate your account.  If you have not received this email, you can click the button below to resend it.  Once you have activated your account, you may <%= link_to "continue to the game", game_path %>.
+
+<br><br><br>
+
+<div align="center">
+  <%= button_to "Resend Email", "activation_resend", class: "btn btn-large btn-primary" %>
+</div>
