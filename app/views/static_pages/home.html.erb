@@ -10,7 +10,7 @@
   <br>
   
   <% if !signed_in? %>
-    <%= link_to "Create an Account!", signup_path, class: "btn btn-large btn-primary" %>
+    <%= link_to "Create an Account!", signup_path, class: "btn btn-large btn-primary", id: "create_account" %>
   <% else %>
     <%= link_to "Resume Game", game_path, class: "btn btn-large btn-primary" %>
   <% end %>
