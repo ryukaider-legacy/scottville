@@ -1,31 +1,48 @@
 <h1>Account Creation</h1>
 
 <div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+  <div class="span8 offset2">
+    <%= form_for(@user, html: { class: "form-horizontal" } ) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+      
+      <div class="control-group">
+        <%= f.label :name %>
+          <div class="controls">
+          <%= f.text_field :name, maxlength: 20, placeholder: "This will be seen by other players", size: 70 %>
+        </div>
+      </div>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, maxlength: 20, placeholder: 'This will be seen by other players' %>
+      <div class="control-group">
+        <%= f.label :email %>
+        <div class="controls">
+          <% if flash[:email] %>
+            <%= f.text_field :email, value: flash[:email], maxlength: 254, placeholder: "Used to log in", size: 70 %>
+          <% else %>
+            <%= f.text_field :email, maxlength: 254, placeholder: "Used to log in", size: 70 %>
+          <% end %>
+        </div>
+      </div>
 
-      <%= f.label :email %>
-      <% if flash[:email] %>
-        <%= f.text_field :email, value: flash[:email], maxlength: 254, placeholder: "Used to log in" %>
-      <% else %>
-        <%= f.text_field :email, maxlength: 254, placeholder: "Used to log in" %>
-      <% end %>
+      <div class="control-group">
+        <%= f.label :password %>
+        <div class="controls">
+          <%= f.password_field :password, maxlength: 20, placeholder: "Minimum 6 characters", size: 70 %>
+        </div>
+      </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, maxlength: 20, placeholder: "Minimum 6 characters" %>
+      <div class="control-group">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <div class="controls">
+          <%= f.password_field :password_confirmation, maxlength: 20, placeholder: "Retype password", size: 70 %>
+        </div>
+      </div>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation, maxlength: 20, placeholder: "Retype password" %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <div class="controls">
+        <%= f.submit "Create my account", class: "btn btn-large btn-primary wide_button", :disable_with => "Creating..." %>
+      </div>
     <% end %>
   </div>
 </div>
-
 
 <script type="text/javascript">
 window.onload = function() {

@@ -1,12 +1,20 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      <b>Please fix the following <%= pluralize(object.errors.count, "problem") %>:</b>
-    <ul>
-    <% object.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+      <div class="error_image">
+        <!-- <b>Please fix the following <%= pluralize(object.errors.count, "problem") %>:</b> -->
+        <ul>
+          <% object.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 <% end %>
+
+<!--
+USED BY:
+account creation page
+edit password page (from password reset link)
+-->

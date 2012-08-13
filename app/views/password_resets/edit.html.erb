@@ -15,11 +15,10 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation, maxlength: 20 %>
       
-      <%= f.submit "Update Password", class: "btn btn-large btn-primary wide_button" %>
+      <%= f.submit "Update Password", class: "btn btn-large btn-primary wide_button", :disable_with => "Updating..." %>
     <% end %>
   </div>
 </div>
-
 
 <script type="text/javascript">
 window.onload = function() {

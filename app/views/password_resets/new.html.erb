@@ -13,13 +13,18 @@
     <%= form_tag password_resets_path, :method => :post do %>
     
       <%= label_tag :email %>
-      <%= text_field_tag :email, session[:bad_email], maxlength: 254 %>
+      <% if flash[:error_field] == "pwemail" %>
+      <div class="error">
+        <%= text_field_tag :email, session[:bad_email], maxlength: 254 %>
+      </div>
+      <% else %>
+        <%= text_field_tag :email, session[:bad_email], maxlength: 254 %>
+      <% end %>
       
-      <%= submit_tag "Submit", class: "btn btn-large btn-primary wide_button" %>
+      <%= submit_tag "Submit", class: "btn btn-large btn-primary wide_button", :disable_with => "Sending..." %>
     <% end %>
   </div>
 </div>
-
 
 <script type="text/javascript">
 window.onload = function() {

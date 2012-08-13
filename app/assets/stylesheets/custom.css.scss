@@ -160,21 +160,37 @@ input, textarea, select, .uneditable-input {
 #error_explanation {
   color: #f00;
   ul {
-    margin: 4px 0 0 22px;
+    margin: 4px 0 0 22px;   /*top, right, bottom, left*/
   }
 }
 
-.field_with_errors {
+.control-group .field_with_errors {
   @extend .control-group;
-  @extend .error;
+  @extend .error_field;
+  float: left;
 }
 
-.error_field {
+.control-group label{
+  font-size: 16px;
+  margin: 6px 0 0 0;
+}
+
+.field_with_errors input {
   border-color: #FF0000;
-  box-shadow: #FF0000;
+}
+.field_with_errors input:focus {
+  box-shadow: 0 0 8px #FF0000;
 }
 
-input[type="checkbox"], label{
+.error input {
+  border-color: #FF0000;
+}
+
+.error input:focus {
+  box-shadow: 0 0 8px #FF0000;
+}
+
+.checkbox_label {
  display:inline-block;
  *display:inline; /*For IE7*/
  *zoom:1;

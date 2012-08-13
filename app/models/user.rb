@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   has_one :building, dependent: :destroy
   
   before_save { |user| user.email = email.downcase }
-  before_save { |user| user.name = name.downcase }
+  # before_save { |user| user.name = name.downcase }
   before_create { generate_token(:remember_token) }
 
   validates :name,  presence:     true,

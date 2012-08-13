@@ -7,7 +7,7 @@ class PasswordResetsController < ApplicationController
   end
   
   def create
-    params[:email] = params[:email].downcase    # my database stores all the emails in lowercase, the database is case sensitive but email addresses are not
+    params[:email] = params[:email].downcase.strip    # my database stores all the emails in lowercase, the database is case sensitive but email addresses are not
     session[:bad_email] = params[:email]
     user = User.find_by_email(params[:email])   # according to the interwebs, find_by methods escape their own input, so this is not vulnerable to SQL injection
     if user   # account exists
@@ -17,17 +17,17 @@ class PasswordResetsController < ApplicationController
       redirect_to login_path
       flash[:info] = "Email sent to " + wrap_text(user.email) + " with password reset instructions."
     else  # if email doesn't exist
-      @error_message = ""
       unless user
+        flash.now[:error_field] = 'pwemail'
         if params[:email].blank?
-          @error_message = 'Email is required'
+          flash[:error_message] = 'Email is required'
         elsif !(params[:email] =~ VALID_EMAIL_REGEX)
-          @error_message = 'Email address is not formatted properly (must be of the form name@foo.bar)'
+          flash[:error_message] = 'Email address is not formatted properly (must be of the form name@foo.bar)'
         else
-          @error_message = 'There is no account for the given email address'
+          flash[:error_message] = 'There is no account for the given email address'
         end
       end
-      render 'new'
+      redirect_to resetpassword_path
     end
   end
   

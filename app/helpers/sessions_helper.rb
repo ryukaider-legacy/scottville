@@ -65,21 +65,24 @@ module SessionsHelper
 
   def login_errors(user)
     @focus_field = 'session_email'
-    @error_message = ""
     unless user
+      flash[:error_field] = 'email'
       if params[:session][:email].blank?
-        @error_message = 'Email is required'
+        flash[:error_message] = 'Email is required'
       elsif !(params[:session][:email] =~ VALID_EMAIL_REGEX)
-        @error_message = 'Email address is not formatted properly (must be of the form name@foo.bar)'
+        flash[:error_message] = 'Email address is not formatted properly (must be of the form name@foo.bar)'
       else
         link = "<a href=\"#{url_for(signup_path)}\">#{"create this account"}</a>"
-        @raw_error_message = "There is no account for the given email address.<br>Do you want to #{link}?"
+        flash[:raw_error_message] = "There is no account for the given email address.<br>Do you want to #{link}?"
         flash[:email] = params[:session][:email]
       end
     end
     if user
+      flash[:error_field] = 'password'
       @focus_field = 'session_password'
-      @error_message = 'Incorrect password'
+      link = "<a href=\"#{url_for(resetpassword_path)}\">#{"forget your password"}</a>"
+      flash[:raw_error_message] = "Incorrect password.  Did you #{link}?"
+      # flash[:error_message] = 'Incorrect password'
     end
   end
   
