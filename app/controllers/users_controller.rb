@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def new
     redirect_to(root_path) unless !signed_in?
     @user = flash[:user] || User.new
-    @focus_field = 'user_name'    # default focus
+    @focus_field = flash[:focus_field] ||'user_name'    # default focus
   end
   
   def create
