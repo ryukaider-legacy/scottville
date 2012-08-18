@@ -4,16 +4,21 @@
 	<br>
 	<h2>"Because sometimes life is like a game."</h2>
   <br>
-  <h3><%= game_name %> is a free to play (with no purchasing advantages) persistent browser-based strategy game.  This game can be played with as little as a few minutes a day.</h3>
+  <h3><%= game_name %> is a free to play persistent browser-based strategy game.  This game can be played with as little as a few minutes a day.</h3>
   <br>
   <h3>In <%= game_name %>, you are the leader of a ninja clan, trying to make your place in a ninja dominated world, and become the first clan to master the ultimate ninjutsu.</h3>
   <br>
   
   <% if !signed_in? %>
-    <%= link_to "Create an Account!", signup_path, class: "btn btn-large btn-primary", id: "create_account" %>
+    <%= button_to "Create an Account!", signup_path, class: "btn btn-large btn-primary", id: "create_account" %>
   <% else %>
-    <%= link_to "Resume Game", game_path, class: "btn btn-large btn-primary" %>
+    <%= button_to "Resume Game", game_path, class: "btn btn-large btn-primary" %>
   <% end %>
   
-  <br><br><br>Note:  JavaScript is required to play this game, and it is recommended that you use the latest version of either Firefox or Chrome.
+  <br><br><br>
+  <noscript>Note:  You do not have JavaScript enabled.  JavaScript is required to play this game.</noscript>
+  <br>
+  <% if detect_ie %>
+    Note:  You are using Internet Explorer.  It is recommended that you use the latest version of either Firefox or Chrome.
+  <% end %>
 </div>

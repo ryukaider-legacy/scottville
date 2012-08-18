@@ -1,8 +1,7 @@
 class GameController < ApplicationController
 
-  # if the user tries to access any of these pages while logged out, they will be asked to login, and redirected to the appropriate page after
-  before_filter :signed_in_user
-  before_filter :activation_redirect
+  before_filter :signed_in_user         # user must be logged in
+  before_filter :activation_redirect    # user must be activated
   
   def index
   end
@@ -15,5 +14,5 @@ class GameController < ApplicationController
     @current_user.building.save
     flash[:success] = "Built a Residence!"
     redirect_to buildings_path
-  end
+  end  
 end

@@ -25,6 +25,7 @@ Scottville::Application.routes.draw do
   match '/contact',    to: 'static_pages#contact'
   match '/help',    to: 'static_pages#help'
   match '/patchnotes',    to: 'static_pages#patchnotes'
+  match '/jsdisabled', to: 'static_pages#jsdisabled'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

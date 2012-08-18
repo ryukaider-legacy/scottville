@@ -9,25 +9,27 @@
   
     <%= form_for(:session, url: sessions_path) do |f| %>
 
-      <%= f.label :email, "Email Address" %>
       <% if flash[:error_field] == "email" %>
       <div class="error">
+        <%= f.label :email, "Email Address" %>
         <%= f.text_field :email, maxlength: 254, value: session[:bad_email] %>
       </div>
       <% else %>
+        <%= f.label :email, "Email Address" %>
         <%= f.text_field :email, maxlength: 254, value: session[:bad_email] %>
       <% end %>
       
-      <%= f.label :password %>
       <% if flash[:error_field] == "password" %>
       <div class="error">
+        <%= f.label :password %>
         <%= f.password_field :password, maxlength: 20 %>
       </div>
       <% else %>
+        <%= f.label :password %>
         <%= f.password_field :password, maxlength: 20 %>
       <% end %>
       
-      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+      <%= check_box_tag :remember_me, 1, params[:remember_me], class: "checkbox" %>
       <%= label_tag :remember_me, "Keep me logged in", class: "checkbox_label" %>
       <br><br>
 

@@ -10,10 +10,10 @@
       <%= render 'shared/error_messages', object: f.object %>
  
       <%= f.label :password %>
-      <%= f.password_field :password, maxlength: 20 %>
+      <%= f.password_field :password, maxlength: 20, placeholder: "Minimum 6 characters" %>
     
       <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation, maxlength: 20 %>
+      <%= f.password_field :password_confirmation, maxlength: 20, placeholder: "Retype password" %>
       
       <%= f.submit "Update Password", class: "btn btn-large btn-primary wide_button", :disable_with => "Updating..." %>
     <% end %>
