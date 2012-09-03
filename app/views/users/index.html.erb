@@ -10,30 +10,14 @@
 <div class="span10 offset1">
   <h4>Click a player row to view their profile.  Click column headers to sort.</h4>
   <br>
-  <table id="playersTable" class="tablesorter player-list">
-    
-    <thead>
-    <tr>
-      <th id="highlight">Player Name</th>
-      <th id="highlight">Ninjutsu Level</th>
-      <th id="highlight">Hero Level</th>
-      <th id="highlight">Stealth Level</th>
-      <th id="highlight">Land</th>
-    </tr>
-    </thead>
-    
-    <tbody>
-    <% @users.each do |user| %>
-      <tr id="<% if user.name == current_user.name %>current-user-highlight<% else %>highlight<% end %>">
-        <td class="name"><a href="/players/<%= user.name %>"><%= user.name %></a></td>
-        <td><a href="/players/<%= user.name %>"><%= rand(100) %></a></td>
-        <td><a href="/players/<%= user.name %>"><%= rand(100) %></a></td>
-        <td><a href="/players/<%= user.name %>"><%= rand(100) %></a></td>
-        <td><a href="/players/<%= user.name %>"><%= rand(100) %></a></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
 </div>
 </div>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#playersTable").tablesorter({
+      widgets: ['zebra'],
+      sortList: [[0,0]]
+    });
+  });
+</script>
