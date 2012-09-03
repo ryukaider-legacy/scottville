@@ -41,9 +41,9 @@ textarea {
   background-color: #D3D1CE;
   border: 2px solid;
   border-color: #777674;
+  padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 40px;
   a {
     color: #0072A3;
   }
@@ -141,16 +141,6 @@ p {
   }
 }
 
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  align: center;
-  width: 50%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -231,7 +221,7 @@ left: 180px;
 /* alerts */
 
 .alert-error {
-  background-color: #B60000;
+  background-color: #AA0000;
   color: #ffffff;
   a {
     color: #00FFFF;
@@ -248,24 +238,9 @@ left: 180px;
   border-color: #000000;
 }
 
- /* users index */
-
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
-  }
-}
-
 /* buttons */
 
-.wide_button {
+.btn-primary {
     width: 150px !important;
 }
 
@@ -275,4 +250,14 @@ left: 180px;
   background: transparent url(error.png) no-repeat left center;
   background-size:24px 24px;
   padding:3px 0px 3px 34px;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  align: center;
+  width: 50%;
+  margin-top: 45px;
+  @include box_sizing;
 }

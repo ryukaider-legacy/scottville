@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, except: [:new, :create]              # must be logged in for these pages
-  before_filter :activation_redirect, only: [:show, :edit, :index]    # must be activated for these pages
-  before_filter :correct_user,   only: [:edit, :update, :destroy]     # must be viewing pages for self to perform these actions
+  before_filter :signed_in_user, except: [:new, :create]                                  # must be logged in for these pages
+  before_filter :activation_redirect, only: [:show, :index]                               # must be activated for these pages
+  before_filter :correct_user, only: [:update, :destroy]                                  # must be viewing pages for self to perform these actions
   before_filter :already_activated, only: [:activation, :activate, :activation_resend]    # can't access activation related pages if already activated
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_name(params[:id])
+    unless @user
+      redirect_to players_path
+    end
   end
   
   def new
@@ -37,16 +40,32 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit
+  def account
+    @user = flash[:user] || current_user
+    @focus_field = flash[:focus_field] || 'current_password'
   end
   
   def update
-    if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
-      sign_in @user
-      redirect_to @user
-    else
-      render 'edit'
+    if @user.authenticate(params[:current_password])    # current password is correct
+      if @user.update_attributes(params[:user])   # new password is valid
+        flash[:success] = 'Password Changed'
+        sign_in_temp @user
+        redirect_to account_path
+      else    # current password is right, but new password is invalid
+        flash[:user] = @user
+        redirect_to account_path
+      end
+    else    # current password is wrong
+      flash[:error_field] = 'current_password'
+      @focus_field = 'current_password'
+      flash[:focus_field] = @focus_field
+      if params[:current_password].blank?
+        flash[:error_message] = 'You must enter your current password to change passwords.'
+        redirect_to account_path
+      else
+        flash[:error_message] = 'Incorrect current password'
+        redirect_to account_path
+      end
     end
   end
   
@@ -55,9 +74,22 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
-    redirect_to users_path
+    if @user.authenticate(params[:current_password_delete])    # current password is correct
+      User.find(params[:id]).destroy
+      flash[:success] = 'Your account has been destroyed :('
+      redirect_to root_path
+    else    # current password is wrong
+      flash[:error_field] = 'current_password_delete'
+      @focus_field = 'current_password_delete'
+      flash[:focus_field] = @focus_field
+      if params[:current_password_delete].blank?
+        flash[:error_message] = 'You must enter your current password to delete your account'
+        redirect_to account_path
+      else
+        flash[:error_message] = 'Incorrect current password'
+        redirect_to account_path
+      end
+    end
   end
   
   def activation

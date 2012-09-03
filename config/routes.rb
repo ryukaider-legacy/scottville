@@ -7,13 +7,17 @@ Scottville::Application.routes.draw do
 
   root to: 'static_pages#home'
   
-  # session pages
+  # user/session pages
   match '/signup',  to: 'users#new'
   match '/login',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  get '/signout' => 'sessions#destroy'
   match '/resetpassword', to: 'password_resets#new'
   match '/activation', to: 'users#activation'
   match '/activation_resend', to: 'users#activation_resend'
+  match '/account', to: 'users#account'
+  match '/players', to: 'users#index'
+  match '/players/:id' => 'users#show'
   
   # game pages
   match '/game', to: 'game#index'

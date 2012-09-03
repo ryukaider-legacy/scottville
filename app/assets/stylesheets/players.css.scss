@@ -1,0 +1,61 @@
+/* tables */
+
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+  vertical-align: top;
+}
+table.tablesorter tbody tr {
+  background-color: #414B58;
+}
+table.tablesorter tbody tr.odd {
+  background-color: #566271;
+}
+table.tablesorter thead tr .headerSortUp {
+  background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+  background-image: url(desc.gif);
+}
+
+table.player-list {
+  @extend .center;
+  color: #FFFFFF;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  th {
+    background-color: #040404;
+    border: 1px solid black;
+    padding-right: 13px;
+  }
+  #highlight:hover {
+    background-color: #317082;
+  }
+  #current-user-highlight {
+    background-color: #AA0000;
+  }
+  #current-user-highlight:hover {
+    background-color: #317082;
+  }
+  th.headerSortDown { 
+    background-image: url(desc.gif) no-repeat left center;
+  } 
+  td.name{
+    text-align: left;
+  }
+  td{
+    border: 1px solid black;
+  }
+  a{
+    display: block;
+    text-decoration:none;
+    color: #FFFFFF;
+    padding: 4px;
+  }
+}

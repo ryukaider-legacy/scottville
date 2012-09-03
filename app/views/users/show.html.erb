@@ -1,11 +1,4 @@
-<% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-</div>
+<h1><%= @user.name %></h1>
+This player is a bro among bros.
+<br><br><br>
+<%= link_to "See list of all players", players_path %>
